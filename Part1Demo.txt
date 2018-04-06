@@ -1,0 +1,9 @@
+Script started on Fri 06 Apr 2018 07:17:10 PM EDT
+]0;ameya05@js-157-98: ~/git/security-hw3ameya05@js-157-98:~/git/security-hw3$ as par1[Kt1.s -o part1.o
+]0;ameya05@js-157-98: ~/git/security-hw3ameya05@js-157-98:~/git/security-hw3$ ld part1.o -o part1.[K
+]0;ameya05@js-157-98: ~/git/security-hw3ameya05@js-157-98:~/git/security-hw3$ ./part1
+$ pwd
+/home/ameya05/git/security-hw3
+$ exit
+]0;ameya05@js-157-98: ~/git/security-hw3ameya05@js-157-98:~/git/security-hw3$ exit
+Script done on Fri 06 Apr 2018 07:18:14 PM EDT
