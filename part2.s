@@ -10,7 +10,7 @@ _start:
 hop:
 
 	xor %rax, %rax	
-	mov $11, %rax
+	add $11, %al
 	pop %rbx
 	xor %rcx, %rcx
 	xor %rdx, %rdx
@@ -18,7 +18,7 @@ hop:
 	
 	xor %rax, %rax
 	xor %rbx, %rbx
-	mov $1, %rax
+	mov $1, %al
 	int $0x80
 end:
 	call hop
