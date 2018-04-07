@@ -1,0 +1,18 @@
+Script started on Fri 06 Apr 2018 09:22:43 PM EDT
+]0;ameya05@js-157-98: ~/git/security-hw3ameya05@js-157-98:~/git/security-hw3$ gcc part3a.c -o part3a
+part3a.c: In function ‘main’:
+part3a.c:45:3: warning: passing argument 1 of ‘posix_memalign’ from incompatible pointer type [enabled by default]
+   posix_memalign(&buf, pagesize, strlen(shellcode)+10);
+   ^
+In file included from part3a.c:3:0:
+/usr/include/stdlib.h:503:12: note: expected ‘void **’ but argument is of type ‘char **’
+ extern int posix_memalign (void **__memptr, size_t __alignment, size_t __size)
+            ^
+]0;ameya05@js-157-98: ~/git/security-hw3ameya05@js-157-98:~/git/security-hw3$ ./part3a
+$ ls
+BufferRedirect64.c	    Part2Demo.txt    part1.o  part2.o  part3a.c
+BufferRedirectViaStack64.c  Part3aDemo1.txt  part1.s  part2.s
+Part1Demo.txt		    part1	     part2    part3a
+$ exit
+]0;ameya05@js-157-98: ~/git/security-hw3ameya05@js-157-98:~/git/security-hw3$ exit
+Script done on Fri 06 Apr 2018 09:23:11 PM EDT
